@@ -1,7 +1,16 @@
 import './indexStyle.css'
 
+const darkModeButton = document.querySelector('#dark-mode-btn');
+
+function darkMode() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+}
+
+darkModeButton.addEventListener('click', darkMode); 
+
 // An array of affirmations
-const affirmations = ["You've got this", "You are amazing", "You can achieve anything", "You are awesome", "Tite"];
+const affirmations = ["You've got this", "You are amazing", "You can achieve anything", "You are awesome", "8=====D"];
 
 async function fetchNewAffirmation() {
   disableButton(true);
