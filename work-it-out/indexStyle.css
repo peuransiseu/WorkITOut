@@ -1,15 +1,15 @@
-/* :root {
+:root {
     
   
-    color-scheme: light dark;
-    /* color: rgba(255, 255, 255, 0.87);
-    background-color: #242424; */
+    /* color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424; */ 
   
-    /* font-synthesis: none;
+     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; */
-  /* } */ 
+    -moz-osx-font-smoothing: grayscale; 
+   } 
 
   body{
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -22,6 +22,7 @@
   .dark-mode {
     background-color: #E5DDC5;
     color: #242424;
+    
   }
 
 #top{
@@ -114,6 +115,8 @@ hr.new1 {
 }
 
 #quote h1{    
+    position: relative;
+    left: 40px;
     font-size: 40px;
     margin-bottom: 0px;
 }
@@ -121,7 +124,10 @@ hr.new1 {
 
 #quote p{
     position: relative;
+    left: 80px;
     bottom: 15px;
+    align-items: center;
+    justify-content: center;
     font-style: italic;
     font-size: 15px;
 }
@@ -132,20 +138,21 @@ hr.new1 {
     color: white;
     margin-top:20px;
     margin-bottom: 20px;
-    border: 1px solid white;
     border-radius: 10px;
     text-align: start;
     font-size: 20px;
     text-align: center;
     justify-content: center;
     align-items: center;
+    width: 400px; /* Set a fixed width */
     height: auto; /* Allow the height to grow */
   }
 
 
-  button {
+ #quote button{
     /* background-color: purple; */
     background-color: burlywood;
+    width: 400px;
     font-size: 18px;
     font-weight: 600;
     line-height: 1;
@@ -156,7 +163,7 @@ hr.new1 {
     cursor: pointer;
   }
   
-  button:disabled {
+button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
@@ -168,7 +175,8 @@ button:hover{
 
   #container-right{
     max-width: 1280px;
-    margin-left: 250px;
+    margin-bottom: 150px;
+    margin-left: 180px;
     display: flex;
     flex-direction: row;
     align-items: end;
@@ -210,11 +218,22 @@ button:hover{
   #container-right button{
     position: relative;
     /* display: flex; */
-    top: 10px;
-    left: 40%;
+    top: 80px;
+    left: 35%;
     margin-left: 10px;
     align-items: center;
     justify-content: center;
+
+    background-color: burlywood;
+    width: 300px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+    color: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
   }
 
 
@@ -227,8 +246,10 @@ button:hover{
     text-align: center;
  }
   
-  
+
   .loading-spinner {
+    position: relative;
+    left: 160px;
     margin-top: 1rem;
     /* border: 8px solid #9a238e; */
     border: 8px solid black;
@@ -242,4 +263,57 @@ button:hover{
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }  
+  }
+
+
+  .exercise-prompt{
+    position: relative;
+    display: flex;
+    left: 60px;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    width: 90%;
+    height: auto;
+    /* border: 1px solid white;
+    border-radius: 10px; */
+  }
+
+
+
+  .exercise-prompt .text{
+    color: white;
+    margin-top:20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: start;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 400px; /* Set a fixed width */
+    height: auto; /* Allow the height to grow */
+  }
+
+
+
+  #prompt-field{
+    position: relative;
+    display: flex;
+    left: 60px;
+    width: 86%;
+    align-items: center;
+    height: auto;
+    padding: 30px;
+    border-radius: 10px;
+  }
+
+  #prompt-field legend{
+    font-style: oblique;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
