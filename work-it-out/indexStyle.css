@@ -226,7 +226,7 @@ button:hover{
   #container-right button{
     position: relative;
     /* display: flex; */
-    top: 80px;
+    top: 40px;
     left: 35%;
     margin-left: 10px;
     align-items: center;
@@ -251,6 +251,7 @@ button:hover{
     width: 100%;
     color: white;
     text-align: center;
+    margin-top: 10px;
  }
   
 
@@ -286,6 +287,7 @@ button:hover{
     color: white;
     width: auto;
     height: auto;
+    font-weight: 400;
     /* border: 1px solid white;
     border-radius: 10px; */
   }
@@ -312,6 +314,7 @@ button:hover{
   #prompt-field{
     position: relative;
     display: flex;
+    bottom: 50px;
     left: 60px;
     width: 86%;
     align-items: center;
