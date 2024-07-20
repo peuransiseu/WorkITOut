@@ -15,7 +15,7 @@
         <h1>WORK IT OUT</h1>
         <p>Your personal artificial fitness buddy!</p>
         <hr class="new1">
-        <button id="dark-mode-btn">Dark Mode</button>
+        <!-- <button id="dark-mode-btn">Dark Mode</button> -->
       </div>
     </div>
 
@@ -37,8 +37,8 @@
           <div id="column1">
             <fieldset class="workouts">
               <legend><strong>Intensity</strong></legend>
-                  <label for="entry-dropdown">Select level of workout: </label>
-                  <select id="entry-dropdown" name="options">
+                  <label for="intensity-dropdown">Select level of workout: </label>
+                  <select id="intensity-dropdown" name="options">
                     <option value="beginner">Beginner</option>
                     <option value="intermediate">Intermediate</option>
                     <option value="advanced">Advanced</option>
@@ -46,10 +46,10 @@
             </fieldset>
             <fieldset class="workouts">
               <legend><strong>Body Part</strong></legend>
-              <label for="entry-dropdown">Select part of body to workout: </label>
-              <select id="entry-dropdown" name="options">
-                <option value="upper-body">Upper Body</option>
-                <option value="lower-body">Lower Body</option>
+              <label for="body-dropdown">Select part of body to workout: </label>
+              <select id="body-dropdown" name="options">
+                <option value="upper body">Upper Body</option>
+                <option value="lower body">Lower Body</option>
               </select>  
             </fieldset>
           </div>
@@ -57,19 +57,19 @@
           <div id="column2">
             <fieldset class="workouts">
               <legend><strong>Time</strong></legend>
-              <label for="entry-dropdown">How long do you want to workout?: </label>
-              <select id="entry-dropdown" name="options">
-                <option value="fifteen-mins">15 mins</option>
-                <option value="thirty-mins">30 mins</option>
-                <option value="one-hour">1 hour</option>
-                <option value="two-hours">2 hours</option>
-                <option value="3-hours">3 hours</option>
+              <label for="time-dropdown">How long do you want to workout?: </label>
+              <select id="time-dropdown" name="options">
+                <option value="fifteen minutes">15 mins</option>
+                <option value="thirty minutes">30 mins</option>
+                <option value="one hour">1 hour</option>
+                <option value="two hours">2 hours</option>
+                <option value="three hours">3 hours</option>
               </select>  
             </fieldset>
             <fieldset class="workouts">
               <legend><strong>Frequency</strong></legend>
-              <label for="entry-dropdown">How often in a week do you want to workout?: </label>
-              <select id="entry-dropdown" name="options">
+              <label for="frequency-dropdown">How often in a week do you want to workout?: </label>
+              <select id="frequency-dropdown" name="options">
                 <option value="one">1</option>
                 <option value="two">2</option>
                 <option value="three">3</option>
@@ -82,10 +82,22 @@
         </form>
       </div>
     </div>
-    <div class="footer">
+
+    <fieldset id="prompt-field">
+      <legend>Your Exercise Plan</legend>
+      <section class="exercise-prompt">
+        <!-- <p id="exercise-plan">Choose your personalized workout above and click "Start Exercising" to generate!</p> -->
+         <div id="exercise-plan">Choose your personalized workout above and click "Start Exercising" to generate!</div>
+        <!-- <ul id="exercise-plan">Choose your personalized workout above and click "Start Exercising" to generate!</ul> -->
+        <!-- <ol id="response-list"></ol> -->
+
+      </section>
+    </fieldset>
+
+    <footer>
       <p>© Francis Angelo Fundal | AWS User Group Dehradun, GenAI Bootcamp Final Project</p>
       <img src="">
-    </div>
+    </footer>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

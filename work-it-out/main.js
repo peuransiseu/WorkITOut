@@ -2,52 +2,79 @@ import './indexStyle.css'
 import { BedrockRuntimeClient, ConverseCommand } from "@aws-sdk/client-bedrock-runtime";
 
 
-const darkModeButton = document.querySelector('#dark-mode-btn');
-const entryDropdown = document.getElementById('entry-dropdown');
+// const darkModeButton = document.querySelector('#dark-mode-btn');
+
 const addEntryButton = document.getElementById('add-prompt');
 
 
-function darkMode() {
-  var element = document.body;
-  element.classList.toggle("dark-mode");
-}
+// function darkMode() {
+//   var element = document.body;
+//   element.classList.toggle("dark-mode");
+// }
 
-darkModeButton.addEventListener('click', darkMode); 
+// darkModeButton.addEventListener('click', darkMode); 
 
 const modelId = 'anthropic.claude-3-sonnet-20240229-v1:0';
-// const prompt = "Give me a short joke to motivate me today, referencing plants, animals, or flowers by adding emoji. Don't show the prompt, only the joke. Do not add anything like Here is a joke... just return the joke alone";
-//const prompt = "Give me a short quote to motivate me today, referencing struggles, about not giving up, or encouraging words to keep going. Don't show the prompt, only the quote. Do not add anything like Here is a quote... just return the quote alone";
+const quotePrompt = "Give me a short quote to motivate me today, referencing struggles, about not giving up, or encouraging words to keep going. Don't show the prompt, only the quote. Do not add anything like Here is a quote... just return the quote alone";
 
-//const prompt = "Give me a joke about trees. Don't show the prompt, only the joke. Add emojis as well."
-// const prompt = "Give me a mot "
+// const exercisePrompt = `Give me a simple ${intensityDropdown.value} workout guide in a listed format that focuses on ${bodyDropdown.value} parts. I want to do it in ${timeDropdown.value} for ${frequencyDropdown.value} times in a week. Do not add anything like Here is a simple workout guide...just return the list alone.`;
+
 const conversation = [
   {
     role: "user",
-    content: [{ text: prompt }],
+    content: [{ text: quotePrompt }],
   },
 ];
 
 
-function fetchExercise(){
 
-  disableButton(true);
-  showLoadingAnimation();
+async function fetchExercise(){
 
-  const targetInputContainer = document.querySelector(`#body-container`);
-  const HTMLString = `<fieldset id="prompt-field">
-                        <legend>Your Exercise Plan</legend>
-                        <section class="exercise-prompt">
-                          <h3 id="affirmation">Loading...</h3>
-                        </section>
-                      </fieldset>`;
+  disableButtonExercise(true);
+  showLoadingAnimationExercise();
+
+  const intensityDropdown = document.getElementById('intensity-dropdown');
+  const bodyDropdown = document.getElementById('body-dropdown');
+  const timeDropdown = document.getElementById('time-dropdown'); 
+  const frequencyDropdown = document.getElementById('frequency-dropdown');
 
   try{
-    targetInputContainer.insertAdjacentHTML('afterend',HTMLString)
+
+    const exercisePrompt = `Give me a simple ${intensityDropdown.value} workout guide in a listed format that focuses on ${bodyDropdown.value} parts. I want to do it in ${timeDropdown.value} for ${frequencyDropdown.value} times in a week. 
+    Do not add anything like Here is a simple workout guide...just return the list alone. Ensure each step starts on a new line. Don't include any number. Please ensure the instructions are clear and concise.`;
+
+    //Ensure each step is numbered and starts on a new line
+    const exercise = [
+      {
+        role: "user",
+        content: [{ text: exercisePrompt }],
+      },
+    ];
+
+    const response = await client.send(new ConverseCommand({ modelId, messages: exercise }));
+    const workoutGuide = response.output.message.content[0].text;
+
+    const responseArray = workoutGuide.split('\n');
+    const workoutPlanContainer = document.getElementById('exercise-plan');
+
+    const ul = document.createElement('ul');
+    responseArray.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item.trim();
+      ul.appendChild(li); 
+    });
+
+    workoutPlanContainer.innerHTML = '';
+    workoutPlanContainer.appendChild(ul);
+
+    // set the affirmation in HTML
+    
+    // document.querySelector("#exercise-plan").innerHTML = workoutGuide;
   } catch(err) {
     console.error(err);
-    document.querySelector("#affirmation").innerHTML = err;
+    document.querySelector("#exercise-plan").innerHTML = err;
   }
-  disableButton(false);
+  disableButtonExercise(false);
 }
 
 addEntryButton.addEventListener('click', fetchExercise);
@@ -74,6 +101,19 @@ function showLoadingAnimation() {
   document.querySelector("#affirmation").innerHTML = '<div class="loading-spinner"></div>';
 }
 
+
+// Shows a loading animation on exercise plan while fetching a new plan
+function showLoadingAnimationExercise() {
+  document.querySelector("#exercise-plan").innerHTML = '<div class="loading">Generating Exercise.....</div>';
+}
+
+
+// Disables the button while fetching a new plan so we don't request several at once by clicking repeatedly
+function disableButtonExercise(isDisabled) {
+  const affirmationButton = document.querySelector("#add-prompt");
+  affirmationButton.disabled = isDisabled;
+}
+
 // Disables the button while fetching a new affirmation so we don't request several at once by clicking repeatedly
 function disableButton(isDisabled) {
   const affirmationButton = document.querySelector("#getNewAffirmation");
@@ -98,7 +138,7 @@ async function init() {
   }
   
   const affirmationButton = document.querySelector("#getNewAffirmation");
-  //affirmationButton.addEventListener("click", fetchNewAffirmation);
+  affirmationButton.addEventListener("click", fetchNewAffirmation);
 }
 
 let client = null;

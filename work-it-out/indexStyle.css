@@ -9,7 +9,14 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; 
+    height: 100%;
+    display: flex;
+    flex-direction: column; 
    } 
+
+   .content {
+    flex: 1; /* Makes the content area grow to fill available space */
+}
 
   body{
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -17,6 +24,7 @@
     font-weight: 400;
     background-color: #242424;
     color: rgba(255, 255, 255, 0.87)
+    
   }
 
   .dark-mode {
@@ -40,7 +48,7 @@ hr.new1 {
     position: absolute;
     left: 400px;
     top: 45px;
-    width: 60lvw;
+    width: 68lvw;
     border-top: 1px solid white;
 }
 
@@ -237,10 +245,9 @@ button:hover{
   }
 
 
-  .footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
+  footer{
+    /* left: 0;
+    bottom: 0; */
     width: 100%;
     color: white;
     text-align: center;
@@ -259,6 +266,7 @@ button:hover{
     height: 60px;
     animation: spin 1s ease-in-out infinite;
   }
+
   
   @keyframes spin {
     0% { transform: rotate(0deg); }
@@ -268,15 +276,15 @@ button:hover{
 
   .exercise-prompt{
     position: relative;
-    display: flex;
-    left: 60px;
-    flex-direction: row;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
 
+    left: 60px;
+    
+    /* text-align: center;
+    align-items: center;
+    justify-content: center; */
+    margin-left: -50px;
     color: white;
-    width: 90%;
+    width: auto;
     height: auto;
     /* border: 1px solid white;
     border-radius: 10px; */
@@ -287,14 +295,15 @@ button:hover{
   .exercise-prompt .text{
     color: white;
     margin-top:20px;
+    
     margin-bottom: 20px;
     border-radius: 10px;
-    text-align: start;
-    font-size: 20px;
-    text-align: center;
+    /* text-align: start; */
+    font-size: 18px;
+    /* text-align: center;
     justify-content: center;
-    align-items: center;
-    width: 400px; /* Set a fixed width */
+    align-items: center; */
+    width: auto; /* Set a fixed width */
     height: auto; /* Allow the height to grow */
   }
 
