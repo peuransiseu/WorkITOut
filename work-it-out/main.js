@@ -2,22 +2,13 @@ import './indexStyle.css'
 import { BedrockRuntimeClient, ConverseCommand } from "@aws-sdk/client-bedrock-runtime";
 
 
-// const darkModeButton = document.querySelector('#dark-mode-btn');
 
 const addEntryButton = document.getElementById('add-prompt');
 
 
-// function darkMode() {
-//   var element = document.body;
-//   element.classList.toggle("dark-mode");
-// }
-
-// darkModeButton.addEventListener('click', darkMode); 
-
 const modelId = 'anthropic.claude-3-sonnet-20240229-v1:0';
 const quotePrompt = "Give me a short quote to motivate me today, referencing struggles, about not giving up, or encouraging words to keep going. Don't show the prompt, only the quote. Do not add anything like Here is a quote... just return the quote alone";
 
-// const exercisePrompt = `Give me a simple ${intensityDropdown.value} workout guide in a listed format that focuses on ${bodyDropdown.value} parts. I want to do it in ${timeDropdown.value} for ${frequencyDropdown.value} times in a week. Do not add anything like Here is a simple workout guide...just return the list alone.`;
 
 const conversation = [
   {
@@ -43,7 +34,6 @@ async function fetchExercise(){
     const exercisePrompt = `Give me a simple ${intensityDropdown.value} workout guide in a listed format that focuses on ${bodyDropdown.value} parts. I want to do it in ${timeDropdown.value} for ${frequencyDropdown.value} times in a week. 
     Do not add anything like Here is a simple workout guide...just return the list alone. Ensure each step starts on a new line. Don't include any number. Please ensure the instructions are clear and concise.`;
 
-    //Ensure each step is numbered and starts on a new line
     const exercise = [
       {
         role: "user",
@@ -57,6 +47,8 @@ async function fetchExercise(){
     const responseArray = workoutGuide.split('\n');
     const workoutPlanContainer = document.getElementById('exercise-plan');
 
+    //Ensure each step starts on a new line
+
     const ul = document.createElement('ul');
     responseArray.forEach(item => {
       const li = document.createElement('li');
@@ -64,12 +56,10 @@ async function fetchExercise(){
       ul.appendChild(li); 
     });
 
+    // set the workout plan in HTML
     workoutPlanContainer.innerHTML = '';
     workoutPlanContainer.appendChild(ul);
-
-    // set the affirmation in HTML
     
-    // document.querySelector("#exercise-plan").innerHTML = workoutGuide;
   } catch(err) {
     console.error(err);
     document.querySelector("#exercise-plan").innerHTML = err;
