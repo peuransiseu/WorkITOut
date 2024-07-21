@@ -160,9 +160,9 @@ async function fetchCredentials() {
       //secretAccessKey: import.meta.env.VITE_AWS_SECRET_ACCESS_KEY,
       //sessionToken: import.meta.env.VITE_AWS_SESSION_TOKEN,
 
-  //  hardcoded, not a right approach
-      accessKeyId: "AKIA2UC3CCVICJ2KDOWS",
-      secretAccessKey: "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",
+  //  Enter Access Keys here:
+      // accessKeyId: "", 
+      // secretAccessKey: "",
 
     },
   };
